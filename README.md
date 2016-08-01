@@ -34,7 +34,15 @@ or
 
 Name | Description
 ---- | -----------
-require | When `true`, an unsafe method must include one of the precondition header.  This prevents the 'lost update' issues.  Defaults to `true`.
+require | When `true`, an unsafe method must include one of the precondition headers.  This prevents the [lost update issue](https://en.wikipedia.org/wiki/Concurrency_control).  Defaults to `true`.
+
+## Status code
+
+The following HTTP status code can be returned by the middleware
+
+Code | Reason
+---- | ------
+[428 Precondition Required](https://tools.ietf.org/html/rfc6585#section-3) | A precondition header is required to avoid the [lost update issue](https://en.wikipedia.org/wiki/Concurrency_control).
 
 # TODO
 
