@@ -15,6 +15,7 @@
   },
   "main": "./lib/index.js",
   "scripts": {
+    "init": "validate-commit-msg",
     "test": "mocha",
     "ci": "gulp release",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"

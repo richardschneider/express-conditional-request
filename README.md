@@ -1,18 +1,13 @@
-# express-conditional-request 
+# Conditional Request 
 
+[![Travis build status](https://travis-ci.org/richardschneider/express-conditional-request.svg)](https://travis-ci.org/richardschneider/express-conditional-request)
+[![Coverage Status](https://coveralls.io/repos/github/richardschneider/express-conditional-request/badge.svg?branch=master)](https://coveralls.io/github/richardschneider/express-conditional-request?branch=master) 
+ [![npm version](https://badge.fury.io/js/express-conditional-request.svg)](https://badge.fury.io/js/express-conditional-request) 
+ 
 Middleware for HTTP Conditional Requests ([RFC 7232](https://tools.ietf.org/html/rfc7232)).
 It conditionally processes a HTTP request based on a precondition (such as an etag or modification date). 
 
 A precondition is specified using the `If-Match`, `If-None-Match`, `If-Modified-Since` or `If-Unmodified-Since` HTTP header. 
-
-### Features
-
-* Uncertainty - `express-conditional-request('123.456(4) km')`
-* SI notation - `express-conditional-request('1.234 56(4) × 10² km')`
-* ASCII notation - `express-conditional-request('1.234 56(4) x 10^2 km')`
-* Conversion - `express-conditional-request('25 m/s').to('km/h')`
-* Symbolic expressions - `express-conditional-request('W/(m² sr)')`
-* Pluggable - `express-conditional-request.config.Number = require('big.js')`
 
 ## Getting started
 
@@ -24,14 +19,22 @@ Install with [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
 
 Include the following in your server startup
 
+````javascript
     const conditionalRequest = require('express-conditional-request')
     app.use(conditionalRequest())
-    
-    -- or
-    
+````
+or
+````javascript
+    const conditionalRequest = require('express-conditional-request')
     const options = { ... }
-    appu.use(conditionRequest(options))
+    app.use(conditionRequest(options))
+````
 
+## Options
+
+Name | Description
+---- | -----------
+require | When `true`, an unsafe method must include one of the precondition header.  This prevents the 'lost update' issues.  Defaults to `true`.
 
 # TODO
 
