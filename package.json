@@ -1,0 +1,39 @@
+{
+  "name": "express-conditional-request",
+  "description": "Middleware for HTTP Conditional Requests (RFC 7232)",
+  "author": {
+    "name": "Richard Schneider",
+    "email": "makaretu@gmail.com"
+  },
+  "license": "MIT",
+  "version": "0.0.0",
+  "homepage": "https://richardschneider.github/express-conditional-request",
+  "bugs": "https://github.com/richardschneider/express-conditional-request/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/richardschneider/express-conditional-request"
+  },
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "mocha",
+    "ci": "gulp release",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.1",
+    "gulp-spawn-mocha": "^2.2.2",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0",
+    "mocha": "*",
+    "semantic-release": "^4.3.5",
+    "should": "^4.0.4",
+    "validate-commit-msg": "^2.6.1"
+  },
+  "config": {
+    "ghooks": {
+      "commit-msg": "validate-commit-msg"
+    }
+  }
+}
