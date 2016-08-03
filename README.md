@@ -2,7 +2,7 @@
 
 [![Travis build status](https://travis-ci.org/richardschneider/express-conditional-request.svg)](https://travis-ci.org/richardschneider/express-conditional-request)
 [![Coverage Status](https://coveralls.io/repos/github/richardschneider/express-conditional-request/badge.svg?branch=master)](https://coveralls.io/github/richardschneider/express-conditional-request?branch=master) 
- [![npm version](https://badge.fury.io/js/express-conditional-request.svg)](https://badge.fury.io/js/express-conditional-request) 
+[![npm version](https://badge.fury.io/js/express-preconditions.svg)](https://badge.fury.io/js/express-preconditions) 
  
 Middleware for HTTP Conditional Requests ([RFC 7232](https://tools.ietf.org/html/rfc7232)).
 It conditionally processes a HTTP request based on a precondition (such as an etag or modification date). 
