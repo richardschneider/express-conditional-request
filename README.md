@@ -34,7 +34,7 @@ or
 
 Name | Description
 ---- | -----------
-requiredwith | An array of HTTP methods that must include one of the precondition headers.  This prevents the [lost update issue](https://en.wikipedia.org/wiki/Concurrency_control).  Defaults to `['PUT', 'PATCH', 'DELETE']`.
+requiredWith | An array of HTTP methods that must include one of the precondition headers.  This prevents the [lost update issue](https://en.wikipedia.org/wiki/Concurrency_control).  Defaults to `['PUT', 'PATCH', 'DELETE']`.
 stateAsync | A function that returns a `Promise` to the get the resource state.
 
 ### Resource state
