@@ -175,6 +175,15 @@ describe('Precondition', () => {
                 .end(done);
         });
 
+        it('should be ignored when If-None-Match is present', done => {
+            request(server)
+                .get(resourceUrl)
+                .set('if-modified-since', resourceLastModified)
+                .set('if-none-match', 'x')
+                .expect(200)
+                .end(done);
+        });
+
         it('should return 304 when not modified', done => {
             request(server)
                 .get(resourceUrl)
