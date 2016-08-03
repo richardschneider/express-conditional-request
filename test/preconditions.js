@@ -34,6 +34,58 @@ describe('Precondition', () => {
 
     });
 
+    describe('if-match', () => {
+
+        it('should succeed when etag exists', done => {
+            request(server)
+                .put(resourceUrl)
+                .set('if-match', resourceEtag)
+                .expect(200)
+                .end(done);
+        });
+
+       it('should succeed when any of the etags exist', done => {
+            request(server)
+                .put(resourceUrl)
+                .set('if-match', ['"x"', '"y"', '"z"', resourceEtag])
+                .expect(200)
+                .end(done);
+        });
+
+       it('should succeed when any etag exists for resource', done => {
+            request(server)
+                .put(resourceUrl)
+                .set('if-match', '*')
+                .expect(200)
+                .end(done);
+        });
+
+        it('should fail when etag does not exist', done => {
+            request(server)
+                .put(resourceUrl)
+                .set('if-match', '"x"')
+                .expect(412)
+                .end(done);
+        });
+
+       it('should fail when none of the etags do not exist', done => {
+            request(server)
+                .put(resourceUrl)
+                .set('if-match', ['"x"', '"y"', '"z"'])
+                .expect(412)
+                .end(done);
+        });
+
+       it('should fail when no etag exists for the resource', done => {
+            request(server)
+                .put('/something-else')
+                .set('if-match', '*')
+                .expect(412)
+                .end(done);
+        });
+
+    });
+
     describe('if-none-match', () => {
 
         it('should succeed when etag does not exist', done => {
