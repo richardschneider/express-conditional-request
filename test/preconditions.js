@@ -4,9 +4,11 @@ let request = require("supertest");
 
 require('should');
 
+const oneDay = 86400000;
+
 describe('Precondition', () => {
 
-    var server, resourceUrl, resourceEtag;
+    var server, resourceUrl, resourceEtag, resourceLastModified;
 
     beforeEach(function (done) {
         server = require('./server')();
@@ -17,6 +19,7 @@ describe('Precondition', () => {
             .expect(function (res) {
                 resourceUrl = res.header['location'];
                 resourceEtag = res.header['etag'];
+                resourceLastModified = res.header['last-modified'];
             })
             .end(done);
     });
@@ -153,5 +156,42 @@ describe('Precondition', () => {
         });
 
     });
+
+    describe('if-modified-since', () => {
+
+        it('should be ignored when the date is invalid', done => {
+            request(server)
+                .get(resourceUrl)
+                .set('if-modified-since', 'not a date')
+                .expect(200)
+                .end(done);
+        });
+
+        it('should be ignored when the method is not GET or HEAD', done => {
+            request(server)
+                .put(resourceUrl)
+                .set('if-modified-since', resourceLastModified)
+                .expect(200)
+                .end(done);
+        });
+
+        it('should return 304 when not modified', done => {
+            request(server)
+                .get(resourceUrl)
+                .set('if-modified-since', new Date(new Date(resourceLastModified) + oneDay).toUTCString())
+                .expect(304)
+                .end(done);
+        });
+
+        it('should return 200 when modified', done => {
+            request(server)
+                .get(resourceUrl)
+                .set('if-modified-since', new Date(new Date(resourceLastModified) - oneDay).toUTCString())
+                .expect(200)
+                .end(done);
+        });
+
+    });
+
 
 });
