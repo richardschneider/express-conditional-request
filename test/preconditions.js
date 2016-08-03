@@ -207,7 +207,16 @@ describe('Precondition', () => {
         it('should be ignored when the date is invalid', done => {
             request(server)
                 .put(resourceUrl)
-                .set('if-umodified-since', 'not a date')
+                .set('if-unmodified-since', 'not a date')
+                .expect(200)
+                .end(done);
+        });
+
+        it('should be ignored when If-Match is present', done => {
+            request(server)
+                .put(resourceUrl)
+                .set('if-unmodified-since', new Date(new Date(resourceLastModified) - oneDay).toUTCString())
+                .set('if-match', resourceEtag)
                 .expect(200)
                 .end(done);
         });
@@ -215,7 +224,7 @@ describe('Precondition', () => {
         it('should return 200 when not modified', done => {
             request(server)
                 .put(resourceUrl)
-                .set('if-umodified-since', new Date(new Date(resourceLastModified) + oneDay).toUTCString())
+                .set('if-unmodified-since', new Date(new Date(resourceLastModified) + oneDay).toUTCString())
                 .expect(200)
                 .end(done);
         });
@@ -223,7 +232,7 @@ describe('Precondition', () => {
         it('should return 412 when modified', done => {
             request(server)
                 .put(resourceUrl)
-                .set('if-umodified-since', new Date(new Date(resourceLastModified) - oneDay).toUTCString())
+                .set('if-unmodified-since', new Date(new Date(resourceLastModified) - oneDay).toUTCString())
                 .expect(412)
                 .end(done);
         });
