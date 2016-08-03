@@ -3,7 +3,6 @@
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var mocha = require('gulp-spawn-mocha');
-//var coveralls = require('gulp-coveralls');
 
 var DEBUG = process.env.NODE_ENV === 'debug',
     CI = process.env.CI === 'true';
@@ -39,6 +38,8 @@ gulp.task('istanbul', function () {
 
 gulp.task('coveralls', ['istanbul'], function () {
   if (!CI) return;
+  var coveralls = require('gulp-coveralls');
+
   return gulp.src('./coverage/lcov.info')
     .pipe(coveralls());
 });

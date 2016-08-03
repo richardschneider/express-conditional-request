@@ -24,6 +24,7 @@
   "devDependencies": {
     "express": "^4.14.0",
     "gulp": "^3.9.1",
+    "gulp-coveralls": "^0.1.4",
     "gulp-jshint": "^2.0.1",
     "gulp-spawn-mocha": "^2.2.2",
     "jshint": "^2.9.2",
