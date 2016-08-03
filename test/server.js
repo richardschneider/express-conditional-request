@@ -1,13 +1,13 @@
 'use strict';
 
 let express = require('express'),
-    conditionalRequest = require('..');
+    conditions = require('..');
 
 module.exports = options => {
     var app = express(),
         store = {};
 
-    app.use(conditionalRequest(options));
+    app.use(conditions(options));
 
     app.get('/:id', (req, res) => {
         let resource = store[req.params.id];

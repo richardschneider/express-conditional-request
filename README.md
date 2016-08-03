@@ -1,4 +1,4 @@
-# Conditional Request 
+# Conditional Requests
 
 [![Travis build status](https://travis-ci.org/richardschneider/express-conditional-request.svg)](https://travis-ci.org/richardschneider/express-conditional-request)
 [![Coverage Status](https://coveralls.io/repos/github/richardschneider/express-conditional-request/badge.svg?branch=master)](https://coveralls.io/github/richardschneider/express-conditional-request?branch=master) 
@@ -13,23 +13,24 @@ A precondition is specified using the `If-Match`, `If-None-Match`, `If-Modified-
 
 Install with [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
 
-    > npm install express-conditional-request --save
+    > npm install express-conditions --save
 
 ## Usage
 
 Include the following in your server startup
 
 ````javascript
-    const conditionalRequest = require('express-conditional-request')
-    app.use(conditionalRequest())
+    const conditions = require('express-conditions')
+    app.use(conditions())
 ````
 or
 ````javascript
-    const conditionalRequest = require('express-conditional-request')
+    const conditions = require('express-conditions')
     const options = { ... }
-    app.use(conditionRequest(options))
+    app.use(conditions(options))
 ````
 
+See our [test server](https://github.com/richardschneider/express-conditional-request/blob/master/test/server.js) for more details.
 ## Options
 
 Name | Description

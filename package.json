@@ -1,5 +1,5 @@
 {
-  "name": "express-conditional-request",
+  "name": "express-conditions",
   "description": "Middleware for HTTP Conditional Requests (RFC 7232)",
   "author": {
     "name": "Richard Schneider",
@@ -7,6 +7,14 @@
   },
   "license": "MIT",
   "version": "0.0.0",
+  "keywords": [
+    "express",
+    "condition", "conditional",
+    "If-Match", "If-None-Match", "If-Modified-Since", "If-Unmodified-Since", "If-Range",
+    "request",
+    "7232", "rfc7232",
+    "precondition"
+  ],
   "homepage": "https://richardschneider.github/express-conditional-request",
   "bugs": "https://github.com/richardschneider/express-conditional-request/issues",
   "repository": {
