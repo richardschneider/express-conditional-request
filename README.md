@@ -13,21 +13,21 @@ A precondition is specified using the `If-Match`, `If-None-Match`, `If-Modified-
 
 Install with [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
 
-    > npm install express-conditions --save
+    > npm install express-preconditions --save
 
 ## Usage
 
 Include the following in your server startup
 
 ````javascript
-    const conditions = require('express-conditions')
-    app.use(conditions())
+    const preconditions = require('express-preconditions')
+    app.use(preconditions())
 ````
 or
 ````javascript
-    const conditions = require('express-conditions')
+    const preconditions = require('express-preconditions')
     const options = { ... }
-    app.use(conditions(options))
+    app.use(preconditions(options))
 ````
 
 See our [test server](https://github.com/richardschneider/express-conditional-request/blob/master/test/server.js) for more details.

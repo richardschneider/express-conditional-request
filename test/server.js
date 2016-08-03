@@ -1,13 +1,13 @@
 'use strict';
 
 let express = require('express'),
-    conditions = require('..');
+    preconditions = require('..');
 
 module.exports = options => {
     var app = express(),
         store = {};
 
-    app.use(conditions(options));
+    app.use(preconditions(options));
 
     app.get('/:id', (req, res) => {
         let resource = store[req.params.id];

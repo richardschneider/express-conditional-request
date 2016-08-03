@@ -1,5 +1,5 @@
 {
-  "name": "express-conditions",
+  "name": "express-preconditions",
   "description": "Middleware for HTTP Conditional Requests (RFC 7232)",
   "author": {
     "name": "Richard Schneider",
