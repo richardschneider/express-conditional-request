@@ -34,19 +34,28 @@ or
 
 Name | Description
 ---- | -----------
-require | When `true`, an unsafe method must include one of the precondition headers.  This prevents the [lost update issue](https://en.wikipedia.org/wiki/Concurrency_control).  Defaults to `true`.
+requiredwith | An array of HTTP methods that must include one of the precondition headers.  This prevents the [lost update issue](https://en.wikipedia.org/wiki/Concurrency_control).  Defaults to `['PUT', 'PATCH', 'DELETE']`.
+stateAsync | A function that returns a `Promise` to the get the resource state.
+
+### Resource state
+
+The resource state contains the `etag` and `lastModified` properties, which conform to the respective HTTP headers.
+
+The default `stateAsync()` obtains the state by sending a `HEAD` request to the server.
 
 ## Status code
 
-The following HTTP status code can be returned by the middleware
+The following HTTP status codes can be returned by the middleware
 
 Code | Reason
 ---- | ------
-[428 Precondition Required](https://tools.ietf.org/html/rfc6585#section-3) | A precondition header is required to avoid the [lost update issue](https://en.wikipedia.org/wiki/Concurrency_control).
+[304 (Not Modified)](https://tools.ietf.org/html/rfc7232#section-4.1) | The resource has not been modified since the version specified by the precondition(s).
+[412 (Precondition Failed)](https://tools.ietf.org/html/rfc7232#section-4.2) | A precondition failed.
+[428 (Precondition Required)](https://tools.ietf.org/html/rfc6585#section-3) | A precondition header is required to avoid the [lost update issue](https://en.wikipedia.org/wiki/Concurrency_control).
 
 # TODO
 
-* The `If-Range` header is not currently supported and is ignored.
+* The `If-Range` header is not currently supported.
 
 
 # License
