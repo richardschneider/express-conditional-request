@@ -193,5 +193,33 @@ describe('Precondition', () => {
 
     });
 
+    describe('if-unmodified-since', () => {
+
+        it('should be ignored when the date is invalid', done => {
+            request(server)
+                .put(resourceUrl)
+                .set('if-umodified-since', 'not a date')
+                .expect(200)
+                .end(done);
+        });
+
+        it('should return 200 when not modified', done => {
+            request(server)
+                .put(resourceUrl)
+                .set('if-umodified-since', new Date(new Date(resourceLastModified) + oneDay).toUTCString())
+                .expect(200)
+                .end(done);
+        });
+
+        it('should return 412 when modified', done => {
+            request(server)
+                .put(resourceUrl)
+                .set('if-umodified-since', new Date(new Date(resourceLastModified) - oneDay).toUTCString())
+                .expect(412)
+                .end(done);
+        });
+
+    });
+
 
 });
