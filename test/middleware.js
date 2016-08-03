@@ -6,10 +6,6 @@ require('should');
 
 describe('Middleware', () => {
 
-    it('should return a function', () => {
-        return middleware.should.be.a.Function;
-    });
-
     it('should return a function that takes (req, res, next)', () => {
         middleware().should.have.property('length', 3);
     });
