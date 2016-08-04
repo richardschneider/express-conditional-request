@@ -36,9 +36,10 @@ See our [test server](https://github.com/richardschneider/express-conditional-re
 ## Options
 
 Name | Description
----- | -----------
+:---- | :-----------
+error | A function that takes (`status code, message, req, res`) and sends an error response.
 requiredWith | An array of HTTP methods that must include one of the precondition headers.  This prevents the [lost update issue](https://en.wikipedia.org/wiki/Concurrency_control).  Defaults to `['PUT', 'PATCH', 'DELETE']`.
-stateAsync | A function that returns a `Promise` to the get the resource state.
+stateAsync | A function that takes `(req)` and returns a `Promise` to the get the assoiciated resource state.
 
 ### Resource state
 
@@ -47,16 +48,17 @@ and can be `undefined`.
 
 The default `stateAsync()` obtains the resource state by sending a `HEAD` request to the server.
 
-## Status code
+## Status codes
 
 The following HTTP status codes can be returned by the middleware
 
 Code | Reason
----- | ------
+:---- | :------
 [304 (Not Modified)](https://tools.ietf.org/html/rfc7232#section-4.1) | The resource has not been modified since the version specified by the precondition(s).
 [412 (Precondition Failed)](https://tools.ietf.org/html/rfc7232#section-4.2) | A precondition failed.
 [428 (Precondition Required)](https://tools.ietf.org/html/rfc6585#section-3) | A precondition header is required to avoid the [lost update issue](https://en.wikipedia.org/wiki/Concurrency_control).
 [501 (Not implemented)](https://tools.ietf.org/html/rfc7231#section-6.6.2s) | A precondition is not yet implemented.
+
 # TODO
 
 * The `If-Range` header is not currently supported.
