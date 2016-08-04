@@ -6,8 +6,10 @@
  
 Middleware for HTTP Conditional Requests ([RFC 7232](https://tools.ietf.org/html/rfc7232)).
 It conditionally processes a HTTP request based on a precondition (such as an etag or modification date). 
-
 A precondition is specified using the `If-Match`, `If-None-Match`, `If-Modified-Since` or `If-Unmodified-Since` HTTP header. 
+
+The [change log](https://github.com/richardschneider/express-conditional-request/releases) is automatically produced with
+the help of [semantic-release](https://github.com/semantic-release/semantic-release).
 
 ## Getting started
 
@@ -40,9 +42,10 @@ stateAsync | A function that returns a `Promise` to the get the resource state.
 
 ### Resource state
 
-The resource state contains the `etag` and `lastModified` properties, which conform to the respective HTTP headers.
+The resource state contains the `etag` and `lastModified` properties, which conform to the respective HTTP headers
+and can be `undefined`.
 
-The default `stateAsync()` obtains the state by sending a `HEAD` request to the server.
+The default `stateAsync()` obtains the resource state by sending a `HEAD` request to the server.
 
 ## Status code
 
