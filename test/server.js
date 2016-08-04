@@ -7,6 +7,14 @@ module.exports = options => {
     var app = express(),
         store = {};
 
+    if (options && options.Authorize) {
+        app.use((req, res, next) => {
+            if (!req.get('Authorization'))
+               return res.status(401).end();
+            next();
+        });
+    }
+
     app.use(preconditions(options));
 
     app.get('/:id', (req, res) => {
