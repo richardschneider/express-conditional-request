@@ -1,6 +1,6 @@
 'use strict';
 
-let request = require("supertest"),
+let request = require('supertest'),
     server = require('./server');
 
 require('should');
@@ -36,7 +36,7 @@ describe('Options', () => {
         it('should continue when precondition is satisfied', done => {
             request(server())
                 .post('/1')
-                .set('If-None-Match', 1)
+                .set('If-None-Match', '*')
                 .send(something)
                 .expect(201)
                 .end(done);
