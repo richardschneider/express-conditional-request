@@ -31,4 +31,13 @@ describe('Resource state', () => {
             .end(done);
     });
 
+    it('should 404 when resource does not exist', done => {
+        request(server)
+            .put("/something-else")
+            .set('authorization', 'Basic YWxpY2U6eHl6enk=')
+            .set('if-match', resourceEtag)
+            .expect(404)
+            .end(done);
+    });
+
 });
