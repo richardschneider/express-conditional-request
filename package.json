@@ -1,12 +1,12 @@
 {
-  "name": "express-preconditions-addl",
-  "description": "Update to Richard Schneider's express-preconditions.Middleware for HTTP Conditional Requests (RFC 7232)",
+  "name": "express-preconditions",
+  "description": "Middleware for HTTP Conditional Requests (RFC 7232)",
   "author": {
-    "name": "Mahesh Mahadevan",
-    "email": "mahesh.mahadevan@gmail.com"
+    "name": "Richard Schneider",
+    "email": "makaretu@gmail.com"
   },
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "keywords": [
     "express",
     "condition", "conditional",
