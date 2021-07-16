@@ -40,6 +40,7 @@ Name | Description
 error | A function that takes (`status code, message, req, res`) and sends an error response.
 requiredWith | An array of HTTP methods that must include one of the precondition headers.  This prevents the [lost update issue](https://en.wikipedia.org/wiki/Concurrency_control).  Defaults to `['PUT', 'PATCH', 'DELETE']`.
 stateAsync | A function that takes `(req)` and returns a `Promise` to the get the assoiciated resource state.
+forwardHeaders | Additional option added to existing express-preconditions package to support sending custom headers to HEAD request.Defaults to `[]`
 
 ### Resource state
 
