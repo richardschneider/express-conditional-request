@@ -13,19 +13,19 @@ the help of [semantic-release](https://github.com/semantic-release/semantic-rele
 
 Install with [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
 
-    > npm install express-preconditions --save
+    > npm install express-preconditions-addl --save
 
 ## Usage
 
 Include the following in your server startup
 
 ````javascript
-    const preconditions = require('express-preconditions')
+    const preconditions = require('express-preconditions-addl')
     app.use(preconditions())
 ````
 or
 ````javascript
-    const preconditions = require('express-preconditions')
+    const preconditions = require('express-preconditions-addl')
     const options = { ... }
     app.use(preconditions(options))
 ````
@@ -66,4 +66,3 @@ Code | Reason
 # License
 The [MIT license](LICENSE).
 
-Copyright © 2016 Richard Schneider [(makaretu@gmail.com)](mailto:makaretu@gmail.com?subject=express-conditional-request)
