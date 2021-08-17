@@ -1,9 +1,9 @@
 {
-  "name": "express-preconditions",
+  "name": "express-preconditions-addl",
   "description": "Middleware for HTTP Conditional Requests (RFC 7232)",
   "author": {
-    "name": "Richard Schneider",
-    "email": "makaretu@gmail.com"
+    "name": "Mahesh Mahadevan",
+    "email": "mahesh.mahadevan@gmail.com"
   },
   "license": "MIT",
   "version": "0.0.0",
@@ -15,11 +15,11 @@
     "7232", "rfc7232",
     "precondition"
   ],
-  "homepage": "https://richardschneider.github/express-conditional-request",
-  "bugs": "https://github.com/richardschneider/express-conditional-request/issues",
+  "homepage": "https://github.com/maheshmahadevan/express-conditional-request",
+  "bugs": "https://github.com/maheshmahadevan/express-conditional-request/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/richardschneider/express-conditional-request"
+    "url": "https://github.com/maheshmahadevan/express-conditional-request"
   },
   "main": "./lib/index.js",
   "scripts": {
