@@ -1,8 +1,6 @@
 # Conditional Requests
 
-[![Travis build status](https://travis-ci.org/richardschneider/express-conditional-request.svg)](https://travis-ci.org/richardschneider/express-conditional-request)
-[![Coverage Status](https://coveralls.io/repos/github/richardschneider/express-conditional-request/badge.svg?branch=master)](https://coveralls.io/github/richardschneider/express-conditional-request?branch=master) 
-[![npm version](https://badge.fury.io/js/express-preconditions.svg)](https://badge.fury.io/js/express-preconditions) 
+This is a small extenstion to Richard Schneider's [express-preconditions](https://www.npmjs.com/package/express-preconditions) package.
  
 Middleware for HTTP Conditional Requests ([RFC 7232](https://tools.ietf.org/html/rfc7232)).
 It conditionally processes a HTTP request based on a precondition (such as an etag or modification date). 
@@ -15,19 +13,19 @@ the help of [semantic-release](https://github.com/semantic-release/semantic-rele
 
 Install with [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
 
-    > npm install express-preconditions --save
+    > npm install express-preconditions-addl --save
 
 ## Usage
 
 Include the following in your server startup
 
 ````javascript
-    const preconditions = require('express-preconditions')
+    const preconditions = require('express-preconditions-addl')
     app.use(preconditions())
 ````
 or
 ````javascript
-    const preconditions = require('express-preconditions')
+    const preconditions = require('express-preconditions-addl')
     const options = { ... }
     app.use(preconditions(options))
 ````
@@ -40,6 +38,7 @@ Name | Description
 error | A function that takes (`status code, message, req, res`) and sends an error response.
 requiredWith | An array of HTTP methods that must include one of the precondition headers.  This prevents the [lost update issue](https://en.wikipedia.org/wiki/Concurrency_control).  Defaults to `['PUT', 'PATCH', 'DELETE']`.
 stateAsync | A function that takes `(req)` and returns a `Promise` to the get the assoiciated resource state.
+forwardHeaders | Additional option added to existing express-preconditions package to support sending custom headers to HEAD request.Defaults to `[]`
 
 ### Resource state
 
@@ -67,4 +66,3 @@ Code | Reason
 # License
 The [MIT license](LICENSE).
 
-Copyright © 2016 Richard Schneider [(makaretu@gmail.com)](mailto:makaretu@gmail.com?subject=express-conditional-request)
