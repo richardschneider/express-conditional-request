@@ -6,13 +6,19 @@
     "email": "mahesh.mahadevan@gmail.com"
   },
   "license": "MIT",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "keywords": [
     "express",
-    "condition", "conditional",
-    "If-Match", "If-None-Match", "If-Modified-Since", "If-Unmodified-Since", "If-Range",
+    "condition",
+    "conditional",
+    "If-Match",
+    "If-None-Match",
+    "If-Modified-Since",
+    "If-Unmodified-Since",
+    "If-Range",
     "request",
-    "7232", "rfc7232",
+    "7232",
+    "rfc7232",
     "precondition"
   ],
   "homepage": "https://github.com/maheshmahadevan/express-conditional-request",
@@ -28,7 +34,9 @@
     "ci": "gulp release",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.21.1"
+  },
   "devDependencies": {
     "express": "^4.14.0",
     "gulp": "^3.9.1",
